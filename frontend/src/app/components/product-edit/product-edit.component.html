@@ -1,0 +1,70 @@
+ <div class="row justify-content-center">
+   <div class="col-md-4 register-user">
+     <!-- form card register -->
+     <div class="card card-outline-secondary">
+       <div class="card-header">
+         <h3 class="mb-0">Edit Product</h3>
+       </div>
+       <div class="card-body">
+         <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+           <div class="form-group">
+          <label for="inputProductCode">Product Code</label>
+          <input class="form-control" type="text" formControlName="code">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.code.errors?.required">
+            Product Code is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputName">Product Name</label>
+          <input class="form-control" type="text" formControlName="name">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+            Product Name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputPrice">Price</label>
+          <input class="form-control" type="number" formControlName="price">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.price.errors?.required">
+            Price is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputCategory">Category</label>
+          <select class="custom-select form-control" (change)="updateCategory($any($event.target).value)"
+            formControlName="category">
+            <option value="">Choose...</option>
+            <option *ngFor="let master of Master" value="{{master.category}}">{{master.category}}
+            </option>
+          </select>
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.category.errors?.required">
+            Choose Category.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputDescription">Description</label>
+          <input class="form-control" type="textArea" formControlName="description">
+        </div>
+
+        <div class="form-group">
+          <label for="inputImage">Image</label>
+          <input class="form-control" type="text" formControlName="image">
+        </div>
+
+        <div class="form-group">
+             <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
+        </div>
+       </form>
+      </div>
+     </div><!-- form  -->
+   </div>
+ </div>
+
