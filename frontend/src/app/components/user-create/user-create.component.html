@@ -1,0 +1,112 @@
+<div class="row justify-content-center">
+  <div class="col-md-4 register-user">
+    <!-- form user register -->
+    <div class="card-body">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="inputUserCode">User Code</label>
+          <input class="form-control" type="text" formControlName="userCode">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.userCode.errors?.required">
+            User Code is required.
+          </div>
+        </div>
+
+	<div class="form-group">
+          <label for="inputFirstName">First Name</label>
+          <input class="form-control" type="text" formControlName="firstName">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.firstName.errors?.required">
+            First Name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputLastName">Last Name</label>
+          <input class="form-control" type="text" formControlName="lastName">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.lastName.errors?.required">
+            Last Name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputEmail3">Email</label>
+          <input class="form-control" type="text" formControlName="email">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">
+            Enter your email.
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.pattern">
+            Enter valid email.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputDesignation">Designation</label>
+          <select class="custom-select form-control" (change)="updateProfile($any($event.target).value)"
+            formControlName="designation">
+            <option value="">Choose...</option>
+            <option *ngFor="let userProfile of UserProfile" value="{{userProfile}}">{{userProfile}}
+            </option>
+          </select>
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.designation.errors?.required">
+            Choose designation.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputGender">Gender</label>
+          <select class="custom-select form-control" (change)="updateGender($any($event.target).value)"
+            formControlName="gender">
+            <option value="">Choose...</option>
+            <option *ngFor="let gender of Gender" value="{{gender}}">{{gender}}
+            </option>
+          </select>
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.gender.errors?.required">
+            Choose gender.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputDateofBirth">Date of Birth</label>
+          <input class="form-control" type="date" formControlName="dateOfBirth">
+        </div>
+
+        <div class="form-group">
+          <label for="inputBranchCode">Branch Code</label>
+          <input class="form-control" type="text" formControlName="branchCode">
+        </div>
+
+        <div class="form-group">
+          <label for="inputImage">Image</label>
+          <input class="form-control" type="text" formControlName="image">
+        </div>
+
+        <div class="form-group">
+          <label for="inputMobile">Mobile No</label>
+          <input class="form-control" type="text" formControlName="mobile">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.mobile.errors?.required">
+            Enter the Mobile Number.
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && myForm.mobile.errors?.pattern">
+            Enter Numbers Only
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputAddress">Address</label>
+          <input class="form-control" type="text" formControlName="address">
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-success btn-lg btn-block" type="submit">Register</button>
+        </div>
+      </form>
+
+    </div>
+  </div><!-- form card register -->
+</div>
